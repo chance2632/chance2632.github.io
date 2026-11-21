@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的小宇宙 · 个人主页</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dot-bg" aria-hidden="true"></div>
+  <div class="poly poly-a" aria-hidden="true"></div>
+  <div class="poly poly-b" aria-hidden="true"></div>
+  <div class="poly poly-c" aria-hidden="true"></div>
+
+  <main id="main">
+    <!-- ============ 主页 ============ -->
+    <section class="page active" id="home">
+      <div class="home-frame">
+        <span class="sparkle s1" aria-hidden="true">✦</span>
+        <span class="sparkle s2" aria-hidden="true">✧</span>
+        <span class="sparkle s3" aria-hidden="true">✦</span>
+        <span class="sparkle s4" aria-hidden="true">✧</span>
+        <span class="sparkle s5" aria-hidden="true">✦</span>
+
+        <div class="intro-block">
+          <h1 id="heroName">欢迎来到张丹鸿的个人网站</h1>
+        </div>
+
+        <a href="#resume" class="cloud cloud-resume thought" data-cloud>
+          <span class="cloud-label">简历</span>
+        </a>
+        <a href="#works" class="cloud cloud-works thought" data-cloud>
+          <span class="cloud-label">作品</span>
+        </a>
+        <a href="#ai" class="cloud cloud-ai thought" data-cloud>
+          <span class="cloud-label">AI</span>
+        </a>
+
+        <div class="home-avatar" aria-hidden="true">
+          <img src="assets/avatar-front.png" alt="" />
+        </div>
+      </div>
+      <blockquote class="home-quote" id="heroQuote">保持好奇，持续创造。</blockquote>
+    </section>
+
+    <!-- ============ 简历 ============ -->
+    <section class="page" id="resume">
+      <div class="sub-head">
+        <a class="back back-home" href="#home">← 返回主页</a>
+        <h2>简历 <span class="page-head-en">Resume</span></h2>
+      </div>
+
+      <!-- 个人介绍卡片 -->
+      <div class="profile-card">
+        <div class="profile-card-inner">
+          <div class="profile-figure">
+            <img src="assets/avatar-front.png" alt="" />
+          </div>
+          <div class="profile-info">
+            <div class="info-row"><span class="info-label">姓名</span><span class="info-value">张丹鸿</span></div>
+            <div class="info-row"><span class="info-label">学校</span><span class="info-value">暨南大学（211）</span></div>
+            <div class="info-row"><span class="info-label">爱好</span><span class="info-value">阅读、旅游</span></div>
+            <div class="info-row"><span class="info-label">游戏</span><span class="info-value">蛋仔派对、王者荣耀、恋与深空、桃源深处有人家...</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel resume-panel">
+        <div class="resume-paper" id="resumePaper">
+          <div class="resume-empty" id="resumeEmpty">
+            <div class="empty-icon">📄</div>
+            <p>还没有上传简历</p>
+            <small>点击右上角「编辑」上传你的 PDF 简历</small>
+          </div>
+          <img id="resumeImage" class="resume-img" alt="简历预览" hidden />
+          <iframe id="resumeFrame" title="PDF 简历" hidden></iframe>
+        </div>
+        <div class="resume-actions">
+          <span class="file-name" id="resumeFileName"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 作品 ============ -->
+    <section class="page" id="works">
+      <div class="sub-head">
+        <a class="back back-home" href="#home">← 返回主页</a>
+        <h2>作品 <span class="page-head-en">Works</span></h2>
+      </div>
+      <div class="works-hub">
+        <a href="#works/planning" class="cloud cloud-big cloud-planning" data-cloud>
+          <span class="cloud-label">策划</span>
+        </a>
+        <a href="#works/posts" class="cloud cloud-big cloud-posts" data-cloud>
+          <span class="cloud-label">推文</span>
+        </a>
+        <a href="#works/videos" class="cloud cloud-big cloud-extra" data-cloud>
+          <span class="cloud-label">视频剪辑</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 策划：上下滑 -->
+    <section class="page" id="works-planning">
+      <div class="sub-head">
+        <a class="back" href="#works">← 返回作品</a>
+        <h2>策划 <span class="page-head-en">Planning</span></h2>
+        <p>向下滚动，逐页浏览完整策划方案</p>
+      </div>
+      <div class="scroll-list" id="planningList"></div>
+    </section>
+
+    <!-- 推文：上下滑动 -->
+    <section class="page" id="works-posts">
+      <div class="sub-head">
+        <a class="back" href="#works">← 返回作品</a>
+        <h2>推文 <span class="page-head-en">Posts</span></h2>
+        <p>上下滑动 · 点击进入详情</p>
+      </div>
+      <div class="video-stack" id="postsList"></div>
+    </section>
+
+    <!-- 视频剪辑：上下滑动卡片 -->
+    <section class="page" id="works-extra">
+      <div class="sub-head">
+        <a class="back" href="#works">← 返回作品</a>
+        <h2>视频剪辑 <span class="page-head-en">Video Editing</span></h2>
+        <p>上下滑动，看看我的视频剪辑作品</p>
+      </div>
+      <div class="video-stack" id="extraList"></div>
+    </section>
+
+    <!-- 推文详情 -->
+    <section class="page" id="post-detail">
+      <div class="sub-head">
+        <a class="back" href="#works/posts">← 返回推文</a>
+        <h2 id="postDetailTitle">推文</h2>
+      </div>
+      <article class="detail-article" id="postDetailBody"></article>
+    </section>
+
+    <!-- ============ AI ============ -->
+    <section class="page" id="ai">
+      <div class="sub-head">
+        <a class="back back-home" href="#home">← 返回主页</a>
+        <h2>AI <span class="page-head-en">Artificial Intelligence</span></h2>
+      </div>
+      <div class="works-hub">
+        <a href="#ai/board" class="cloud cloud-big cloud-board" data-cloud>
+          <span class="cloud-label">看板</span>
+        </a>
+        <a href="#ai/media" class="cloud cloud-big cloud-media" data-cloud>
+          <span class="cloud-label">视觉创作</span>
+        </a>
+        <a href="#ai/vibe" class="cloud cloud-big cloud-vibe" data-cloud>
+          <span class="cloud-label">AI coding</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="page" id="ai-board">
+      <div class="sub-head">
+        <a class="back" href="#ai">← 返回 AI</a>
+        <h2>看板 <span class="page-head-en">Board</span></h2>
+        <p>自制参与线下活动看板，直观展示活动内容</p>
+      </div>
+      <div id="boardBuiltin" class="board-wrap">
+        <iframe id="boardFrame" class="board-frame" src="assets/board/kpl-board.html" title="深圳 KPL 奇妙日活动看板"></iframe>
+      </div>
+      <div class="scroll-list" id="boardList"></div>
+    </section>
+
+    <section class="page" id="ai-media">
+      <div class="sub-head">
+        <a class="back" href="#ai">← 返回 AI</a>
+        <h2>视觉创作 <span class="page-head-en">Visual Creation</span></h2>
+      </div>
+      <div class="video-stack" id="mediaList"></div>
+    </section>
+
+    <section class="page" id="ai-vibe">
+      <div class="sub-head">
+        <a class="back" href="#ai">← 返回 AI</a>
+        <h2>AI coding <span class="page-head-en">Make it real</span></h2>
+      </div>
+      <div class="video-stack" id="vibeList"></div>
+    </section>
+
+    <section class="page" id="ai-coding-detail">
+      <div class="sub-head">
+        <a class="back" href="#ai/vibe">← 返回 AI coding</a>
+        <h2 id="codingDetailTitle">作品</h2>
+      </div>
+      <article class="detail-article" id="codingDetailBody"></article>
+    </section>
+  </main>
+
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      SiteApp.init().catch(function (e) { console.error('站点初始化失败', e); });
+    });
+  </script>
+</body>
+</html>

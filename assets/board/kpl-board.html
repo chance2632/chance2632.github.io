@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPL奇妙日 · 10月24日现场活动看板</title>
+<style>
+  :root{
+    --red:#e03e3e; --red-bg:#fff1f1; --red-line:#f5b5b5;
+    --ink:#2b2b33; --sub:#6b6b78; --line:#e8e4dc;
+    --card:#ffffff; --bg:#faf7f2; --gold:#f6a623;
+    --dream:#3f7fe0; --a:#8a67c9; --b:#d97ba8; --plaza:#2fa37c; --booth:#d98b2b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;line-height:1.55;padding-bottom:90px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+
+  header{background:linear-gradient(135deg,#1f3c88 0%,#3f6fd8 55%,#6fa0ef 100%);color:#fff;padding:26px 0 20px;border-radius:0 0 22px 22px;box-shadow:0 4px 18px rgba(31,60,136,.25)}
+  header h1{font-size:24px;letter-spacing:1px}
+  header .meta{margin-top:8px;font-size:14px;opacity:.92}
+  header .note{margin-top:10px;font-size:12px;opacity:.75}
+
+  .stars{margin:-16px auto 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:860px;padding:0 16px}
+  .star-chip{background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 3px 12px rgba(0,0,0,.08);font-size:13px;min-width:150px;flex:1}
+  .star-chip b{color:var(--red);font-size:15px}
+  .star-chip .cnt{color:var(--sub)}
+  .star-chip .tbd{color:var(--gold);font-weight:600}
+
+  .filters{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.96);backdrop-filter:blur(6px);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1.5px solid #d8d2c6;background:#fff;border-radius:999px;padding:5px 13px;font-size:13px;cursor:pointer;color:#555;transition:.15s}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.player.on{background:var(--red);border-color:var(--red)}
+  .chips .sep{width:1px;background:#ddd8ce;margin:2px 4px}
+
+  .legend{display:flex;gap:14px;align-items:center;font-size:12px;color:var(--sub);margin:14px 2px 4px;flex-wrap:wrap}
+  .legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+
+  .timeline{margin-top:10px}
+  .tl-item{display:flex;gap:12px;margin-bottom:14px}
+  .tl-time{flex:0 0 96px;text-align:right;padding-top:14px}
+  .tl-time .t{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+  .tl-item.all-day .tl-time .t{font-size:13px;color:var(--gold)}
+  .tl-body{flex:1;min-width:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 2px 8px rgba(0,0,0,.04);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--vc,#ccc)}
+  .card h3{font-size:15.5px;font-weight:700}
+  .card .venue{display:inline-block;font-size:11.5px;color:#fff;background:var(--vc,#999);border-radius:6px;padding:1.5px 8px;margin-bottom:6px;font-weight:600}
+  .card .desc{font-size:13px;color:var(--sub);margin-top:4px}
+  .card .who{font-size:12.5px;color:#8a8494;margin-top:6px}
+  .card.hit{background:var(--red-bg);border-color:var(--red-line);box-shadow:0 3px 14px rgba(224,62,62,.13)}
+  .card.hit::before{background:var(--red)}
+  .card.hit h3{color:var(--red)}
+  .card.hit .venue{background:var(--red)}
+  .star-badge{position:absolute;top:-1px;right:10px;background:var(--red);color:#fff;font-size:11px;padding:3px 10px;border-radius:0 0 8px 8px;font-weight:700;letter-spacing:1px}
+  .tag{display:inline-block;font-size:11px;border:1px solid #d8d2c6;color:#8a8494;border-radius:6px;padding:1px 7px;margin:3px 4px 0 0}
+  .tip{background:#fff8e8;border:1px solid #f2d9a0;color:#8a6a1f;border-radius:12px;padding:10px 14px;font-size:12.5px;margin-top:18px}
+  .tip b{color:#a8801f}
+  .empty{text-align:center;color:var(--sub);padding:40px 0;font-size:14px;display:none}
+  footer{text-align:center;font-size:11.5px;color:#b0aa9e;margin-top:26px;padding:0 20px}
+
+  .fab{position:fixed;right:18px;bottom:18px;z-index:60}
+  .fab button{width:44px;height:44px;border-radius:50%;border:none;background:var(--ink);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+  @media (max-width:520px){
+    .tl-time{flex-basis:78px}
+    header h1{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>🏆 KPL奇妙日 · 现场活动看板</h1>
+    <div class="meta">📅 10月24日（周六） ｜ 📍 深圳国际会展中心 2号馆 · 奇妙日馆</div>
+    <div class="note">整理自官方海报与俱乐部官宣 · 活动时间仅供参考，以现场实际情况为准；如有人员变动，以俱乐部实际公布为准</div>
+  </div>
+</header>
+
+<div class="stars wrap" style="display:flex">
+  <div class="star-chip"><b>⭐ 一诺</b>（AG超玩会）<br><span class="cnt">3 个环节 · 14:40 淘宝展台 / 15:00 荣耀表演赛 / 17:00 满赠互动</span></div>
+  <div class="star-chip"><b>⭐ 清融</b><br><span class="cnt">3 个环节 · 13:00 大巡游 / 14:30 小东见面会 / 15:00 荣耀表演赛</span></div>
+  <div class="star-chip"><b>⭐ 钎城</b>（深圳DYG）<br><span class="tbd">万象棋展区 · 时间待官方公布</span></div>
+</div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="chips" id="venueChips">
+      <button class="chip on" data-v="all">全部</button>
+      <button class="chip" data-v="dream">造梦主舞台</button>
+      <button class="chip" data-v="a">圆梦舞台A</button>
+      <button class="chip" data-v="b">圆梦舞台B</button>
+      <button class="chip" data-v="plaza">南广场</button>
+      <button class="chip" data-v="ag">AG展位</button>
+      <button class="chip" data-v="chess">万象棋展区</button>
+      <span class="sep"></span>
+      <button class="chip player" data-p="一诺">一诺</button>
+      <button class="chip player" data-p="钎城">钎城</button>
+      <button class="chip player" data-p="清融">清融</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="legend">
+    <span><span class="dot" style="background:var(--red)"></span>一诺 / 钎城 / 清融 相关（标红）</span>
+    <span><span class="dot" style="background:var(--dream)"></span>造梦主舞台</span>
+    <span><span class="dot" style="background:var(--plaza)"></span>南广场</span>
+    <span><span class="dot" style="background:var(--booth)"></span>展位</span>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+  <div class="empty" id="empty">该筛选条件下暂无活动</div>
+
+  <div class="tip">
+    <b>⚡ 重点关注：</b>15:00–16:00 <b>荣耀表演赛</b>是一诺、清融<b>同台</b>的环节，建议提前占位（官方海报标造梦主舞台，JDG 排班表标 2号馆·奇妙日主舞台，到场后以现场指引为准）。
+    <b>14:30–15:00 有冲突</b>：清融在 JDG 小东见面会（圆梦B），一诺 14:40 起在淘宝展台互动，二选一。
+    钎城空降万象棋展区的具体时间段官方尚未公布，建议当天多刷官方动态。
+  </div>
+</div>
+
+<footer>数据整理自俱乐部互动舞台时间表、AG/JDG 展位排班、官方活动海报及王者荣耀万象棋官宣 · 仅供出行参考</footer>
+
+<div class="fab"><button onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button></div>
+
+<script>
+const VENUES = {
+  dream:{name:"造梦主舞台",color:"#3f7fe0"},
+  a:{name:"圆梦舞台A",color:"#8a67c9"},
+  b:{name:"圆梦舞台B",color:"#d97ba8"},
+  plaza:{name:"南广场",color:"#2fa37c"},
+  ag:{name:"AG展位（阿银小卖部）",color:"#d98b2b"},
+  chess:{name:"万象棋展区·1号馆A10",color:"#c2504a"}
+};
+const TARGETS = ["一诺","钎城","清融"];
+
+// 按开始时间排序；allDay:true 的排在最前
+const EVENTS = [
+  {s:"11:00",e:"11:30",v:"dream",title:"全明星广播体操",desc:"22 位选手领操，可围观互动",who:"轩染(AG)、呆呆、小乐、流星、小楼、Silver、光明、流浪、皖皖、米苏、壶神、早点、景诗、小泽、阿豆、子意、挽梦、四宝、小果汁、一枝花、霞落、怀沙",targets:[]},
+  {s:"11:30",e:"12:30",v:"b",title:"广州TTG · 一日店长",desc:"选手体验店长日常，可围观",who:"广州TTG",targets:[]},
+  {s:"12:00",e:"12:20",v:"ag",title:"染祥 × 北诗 · 一日店长",desc:"一号展位，AG小卖部环节",who:"染祥、北诗",targets:[]},
+  {s:"12:00",e:"12:30",v:"dream",title:"醒狮送福",desc:"舞狮表演 + 选手送福，与一诺展位互动时间基本重叠，需取舍",who:"风箫(EDG.M)、Ming、余忆(eStarPro)、今屿(RW侠)、绝意(WE)",targets:[]},
+  {s:"13:00",e:"14:00",v:"plaza",title:"王者全英雄 & 电竞选手大巡游",desc:"全部 22 家俱乐部参加；JDG 排班表明确列出清融，一诺(AG)、钎城(深圳DYG)大概率随队出场",who:"成都AG超玩会、深圳DYG、北京JDG（含清融）等 22 家俱乐部",targets:["清融"]},
+  {s:"14:40",e:"15:00",v:"ag",title:"一诺 · 淘宝展台互动",desc:"淘宝展台；14:30–15:00 清融同时在 JDG 小东见面会（圆梦B），两者需二选一，结束后都要赶 15:00 荣耀表演赛",who:"一诺",targets:["一诺"]},
+  {s:"15:00",e:"15:30",v:"ag",title:"钟意 × 长生 · 一日店长",desc:"一号展位",who:"钟意、长生",targets:[]},
+  {s:"15:00",e:"16:00",v:"dream",title:"荣耀表演赛 ⚡ 今日必看",desc:"一诺、清融同台的环节，建议提前占位；官方海报标注造梦主舞台，JDG 排班表标注 2号馆·奇妙日主舞台，以现场指引为准",who:"小落(王科)、句号(何伟嘉)、大帅(孟家俊)、无言(赵昊宇)、一诺(徐必成)、清融(黄垚钦)",targets:["一诺","清融"]},
+  {s:"15:00",e:"16:00",v:"a",title:"杭州LGD.NBW · 见面会",desc:"圆梦互动舞台A",who:"杭州LGD.NBW",targets:[]},
+  {s:"15:30",e:"16:30",v:"b",title:"上海EDG.M · 签售会",desc:"圆梦互动舞台B",who:"上海EDG.M",targets:[]},
+  {s:"16:15",e:"16:30",v:"dream",title:"南通Hero · 久酱见面会",desc:"久哲亮相造梦主舞台",who:"南通Hero久竞",targets:[]},
+  {s:"16:20",e:"16:50",v:"ag",title:"轩染 × 大帅 · 一日店长",desc:"一号展位",who:"轩染、大帅",targets:[]},
+  {s:"16:30",e:"17:30",v:"a",title:"KSG · 选手签名互动",desc:"圆梦互动舞台A",who:"KSG",targets:[]},
+  {s:"17:00",e:"18:00",v:"b",title:"重庆狼队 · Say Bye 互动",desc:"圆梦互动舞台B",who:"重庆狼队",targets:[]},
+  {s:"17:00",e:"19:00",v:"dream",title:"成都AG超玩会 · 满赠选手互动",desc:"AG全员登台（AG排班表 17:00–18:00 标注全员），一诺大概率出席",who:"成都AG超玩会全员（含一诺）",targets:["一诺"]},
+  {s:"18:00",e:"19:00",v:"a",title:"佛山DRG · 见面会",desc:"圆梦互动舞台A",who:"佛山DRG",targets:[]},
+  {s:"",e:"",v:"chess",allDay:true,title:"钎城 空降万象棋展区",desc:"王者荣耀万象棋官宣：10月24日钎城空降送祝福、联动脉动走秀；具体时间段官方尚未公布（1号馆 A10 展区），建议当天留意官方后续宣发",who:"深圳DYG.钎城",targets:["钎城"]},
+  {s:"14:30",e:"15:00",v:"b",title:"JDG · 小东见面会",desc:"圆梦互动舞台B；JDG 排班名单含清融，是今天除荣耀表演赛外唯一能在舞台近距离看到清融的环节",who:"无畏、清融、无双、小寒、昊昊、光明、零枂",targets:["清融"]}
+];
+
+const tl = document.getElementById("timeline");
+const empty = document.getElementById("empty");
+let curV = "all", curP = null;
+
+function toMin(t){const [h,m]=t.split(":").map(Number);return h*60+m;}
+
+function render(){
+  let list = EVENTS.filter(ev=>{
+    if(curV!=="all" && ev.v!==curV) return false;
+    if(curP && !(ev.targets&&ev.targets.includes(curP))) return false;
+    return true;
+  });
+  list.sort((x,y)=>{
+    if(!!x.allDay!==!!y.allDay) return x.allDay?-1:1;
+    return toMin(x.s)-toMin(y.s);
+  });
+  tl.innerHTML = list.map(ev=>{
+    const v = VENUES[ev.v];
+    const hit = ev.targets && ev.targets.length;
+    const time = ev.allDay ? "全天" : `${ev.s}<br><span style="font-weight:400;color:var(--sub);font-size:12px">${ev.e}</span>`;
+    const who = ev.who?`<div class="who">👤 ${ev.who}</div>`:"";
+    const badge = hit?`<div class="star-badge">⭐ ${ev.targets.join(" · ")}</div>`:"";
+    return `<div class="tl-item${ev.allDay?' all-day':''}">
+      <div class="tl-time"><div class="t">${time}</div></div>
+      <div class="tl-body">
+        <div class="card${hit?' hit':''}" style="--vc:${hit?'var(--red)':v.color}">
+          ${badge}
+          <span class="venue">${v.name}</span>
+          <h3>${ev.title}</h3>
+          <div class="desc">${ev.desc}</div>
+          ${who}
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+  empty.style.display = list.length?"none":"block";
+}
+
+document.querySelectorAll("#venueChips .chip").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(btn.dataset.v){
+      curV = btn.dataset.v; curP = null;
+    }else{
+      curP = (curP===btn.dataset.p)?null:btn.dataset.p;
+      curV = "all";
+    }
+    document.querySelectorAll("#venueChips .chip").forEach(b=>b.classList.remove("on"));
+    if(curP){
+      document.querySelector(`.chip[data-p="${curP}"]`).classList.add("on");
+    }else if(curV==="all"){
+      document.querySelector('.chip[data-v="all"]').classList.add("on");
+    }else{
+      document.querySelector(`.chip[data-v="${curV}"]`).classList.add("on");
+    }
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
