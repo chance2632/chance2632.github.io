@@ -76,24 +76,24 @@
       quote: '保持好奇，持续创造。',
       avatar: ''
     },
-    resume: { fileId: '', fileName: '张丹鸿-暨南大学.pdf', builtin: 'assets/resume.pdf', builtinImage: 'assets/resume-hd.png' },
-    planningDoc: { title: '南方报业 AIGC 创作培训基地 · 策划方案', dir: 'assets/planning/', count: 36 },
+    resume: { fileId: '', fileName: '张丹鸿-暨南大学.pdf', builtin: 'assets/resume.pdf', builtinImage: 'assets/resume-hd.webp' },
+    planningDoc: { title: '南方报业 AIGC 创作培训基地 · 策划方案', dir: 'assets/planning/', count: 36, ext: 'webp' },
     postsBuiltin: [
-      { title: '志愿服务，探索全运智慧', tag: '推文作品', cover: 'assets/posts/cover1.jpg', image: 'assets/posts/post1.jpg' },
-      { title: '从侨批到侨校学子', tag: '推文作品', cover: 'assets/posts/cover2.jpg', image: 'assets/posts/post2.jpg' },
-      { title: '融合传播训练营 · 潮安手拉壶', tag: '推文作品', cover: 'assets/posts/cover3.jpg', image: 'assets/posts/post3.jpg' }
+      { title: '志愿服务，探索全运智慧', tag: '推文作品', cover: 'assets/posts/cover1.webp', image: 'assets/posts/post1.webp' },
+      { title: '从侨批到侨校学子', tag: '推文作品', cover: 'assets/posts/cover2.webp', image: 'assets/posts/post2.webp' },
+      { title: '融合传播训练营 · 潮安手拉壶', tag: '推文作品', cover: 'assets/posts/cover3.webp', image: 'assets/posts/post3.webp' }
     ],
     videosBuiltin: [
-      { title: '实验室制取粤语', tag: '视频剪辑', desc: '自制趣味粤语视频，获得5000+浏览，600+点赞', cover: 'assets/videos/video1.jpg' },
-      { title: '综艺混剪作品1', tag: '视频剪辑', cover: 'assets/videos/video2.png' },
-      { title: '综艺混剪作品2', tag: '视频剪辑', cover: 'assets/videos/video3.png' }
+      { title: '实验室制取粤语', tag: '视频剪辑', desc: '自制趣味粤语视频，获得5000+浏览，600+点赞', cover: 'assets/videos/video1.webp' },
+      { title: '综艺混剪作品1', tag: '视频剪辑', cover: 'assets/videos/video2.webp' },
+      { title: '综艺混剪作品2', tag: '视频剪辑', cover: 'assets/videos/video3.webp' }
     ],
     mediaBuiltin: [
       { video: 'assets/ai-media/ai-video.mp4' }
     ],
     aiCodingBuiltin: [
-      { title: '自制小红书休闲小工具，上线一天就有超100人使用', cover: 'assets/ai-coding/coding1.png' },
-      { title: '预览图', cover: 'assets/ai-coding/coding2.png' }
+      { title: '自制小红书休闲小工具，上线一天就有超100人使用', cover: 'assets/ai-coding/coding1.webp' },
+      { title: '预览图', cover: 'assets/ai-coding/coding2.webp' }
     ],
     planning: [],
     posts: [],
@@ -137,6 +137,8 @@
           else if (k === 'postsBuiltin' || k === 'videosBuiltin' || k === 'mediaBuiltin' || k === 'aiCodingBuiltin') { /* 始终用最新内置内容，不覆盖 */ }
           else if (k === 'resume') {
             state.resume = Object.assign({}, defaults.resume, saved.resume || {});
+            // 内置简历图路径始终用最新版（webp），避免旧数据残留 png 路径
+            state.resume.builtinImage = defaults.resume.builtinImage;
             // 未上传过自定义文件时，文件名跟随内置简历
             if (!state.resume.fileId && state.resume.builtin) state.resume.fileName = defaults.resume.fileName;
           }

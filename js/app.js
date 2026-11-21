@@ -8,6 +8,17 @@
   let state = null;
   let currentPostId = null;
 
+  /* CDN 加速：线上(https)把内置图片走 gcore.jsdelivr.net，本地(file://)用相对路径。
+     视频不走 CDN（84MB 超 jsDelivr 单文件 20MB 限制），只处理图片。 */
+  const CDN = 'https://gcore.jsdelivr.net/gh/chance2632/chance2632.github.io@main/';
+  const isOnline = () => /^https?:$/.test(location.protocol);
+  const isImagePath = (p) => /\.(webp|png|jpe?g|gif|svg)$/i.test(p || '');
+  function assetUrl(path) {
+    if (!path) return '';
+    if (isOnline() && isImagePath(path) && !/^https?:/i.test(path)) return CDN + path.replace(/^\.?\//, '');
+    return path;
+  }
+
   /* 把文件 ID 转成可访问的 URL（同一 ID 复用，避免重复创建对象 URL） */
   async function fileUrl(id) {
     if (!id) return '';
@@ -58,8 +69,9 @@
     }
     frame.hidden = true; frame.removeAttribute('src');
     if (r.builtinImage) {
-      // 内置简历：直接显示图片，任何浏览器/预览环境都能看
-      if (img.getAttribute('src') !== r.builtinImage) img.src = r.builtinImage;
+      // 内置简历：直接显示图片，线上走 CDN 加速
+      const src = assetUrl(r.builtinImage);
+      if (img.getAttribute('src') !== src) img.src = src;
       img.hidden = false; empty.hidden = true;
       return;
     }
@@ -83,7 +95,8 @@
         if (count > 0 && doc.dir) {
           let html = `<div class="doc-intro"><h3>${esc(doc.title || '策划方案')}</h3><p>向下滚动，逐页浏览完整方案 · 共 ${count} 页</p></div>`;
           for (let i = 1; i <= count; i++) {
-            const src = `${doc.dir}p${String(i).padStart(2, '0')}.png`;
+            const ext = doc.ext || 'png';
+            const src = assetUrl(`${doc.dir}p${String(i).padStart(2, '0')}.${ext}`);
             html += `<figure class="doc-page"><img src="${esc(src)}" alt="策划方案 第 ${i} 页" loading="lazy" /><figcaption>${i} / ${count}</figcaption></figure>`;
           }
           el.innerHTML = html;
@@ -135,7 +148,7 @@
         if (it.video) {
           return `<figure class="media-shot"><video src="${esc(it.video)}" ${it.poster ? `poster="${esc(it.poster)}"` : ''} controls playsinline preload="metadata"></video></figure>`;
         }
-        return `<figure class="media-shot"><img src="${esc(it.cover)}" alt="" loading="lazy" /></figure>`;
+        return `<figure class="media-shot"><img src="${esc(assetUrl(it.cover))}" alt="" loading="lazy" /></figure>`;
       }
       const url = await fileUrl(it.fileId);
       const gallery = await Promise.all((it.gallery || []).map(async (g) => ({ ...g, url: await fileUrl(g.fileId) })));
@@ -169,7 +182,7 @@
     const html = await Promise.all(items.map(async (it, i) => {
       let media;
       if (builtinMode) {
-        media = `<img class="vcard-media" src="${esc(it.cover)}" alt="${esc(it.title)}" loading="lazy" />`;
+        media = `<img class="vcard-media" src="${esc(assetUrl(it.cover))}" alt="${esc(it.title)}" loading="lazy" />`;
       } else {
         const url = await fileUrl(it.fileId);
         if (url && isVideo(it.type, it.fileName)) {
@@ -214,7 +227,7 @@
     const html = await Promise.all(items.map(async (it) => {
       let media;
       if (builtinMode) {
-        media = `<img class="vcard-media" src="${esc(it.cover)}" alt="${esc(it.title)}" loading="lazy" />`;
+        media = `<img class="vcard-media" src="${esc(assetUrl(it.cover))}" alt="${esc(it.title)}" loading="lazy" />`;
       } else {
         const url = await fileUrl(it.fileId);
         if (url && isVideo(it.type, it.fileName)) {
@@ -263,7 +276,7 @@
       const plain = builtinMode && i === 0;
       let media;
       if (builtinMode) {
-        media = `<img class="vcard-media${plain ? '' : ' vcard-thumb'}" src="${esc(it.cover)}" alt="${esc(it.title)}" loading="lazy" />`;
+        media = `<img class="vcard-media${plain ? '' : ' vcard-thumb'}" src="${esc(assetUrl(it.cover))}" alt="${esc(it.title)}" loading="lazy" />`;
       } else {
         const url = await fileUrl(it.fileId);
         if (url && isVideo(it.type, it.fileName)) {
@@ -301,7 +314,7 @@
     if (!it) return;
     $('#codingDetailTitle').textContent = it.title || '作品';
     if (isBuiltin) {
-      $('#codingDetailBody').innerHTML = `<figure class="detail-longimg"><img src="${esc(it.cover)}" alt="${esc(it.title)}" /></figure>`;
+      $('#codingDetailBody').innerHTML = `<figure class="detail-longimg"><img src="${esc(assetUrl(it.cover))}" alt="${esc(it.title)}" /></figure>`;
     } else {
       const cover = await fileUrl(it.fileId);
       const gallery = await Promise.all((it.gallery || []).map(async (g) => ({ ...g, url: await fileUrl(g.fileId) })));
@@ -439,8 +452,8 @@
     currentPostId = it.id || '';
     $('#postDetailTitle').textContent = it.title || '推文';
     if (isBuiltin) {
-      // 内置推文：整张长图完整展示，可上下滚动阅读
-      $('#postDetailBody').innerHTML = `<figure class="detail-longimg"><img src="${esc(it.image)}" alt="${esc(it.title)}" /></figure>`;
+      // 内置推文：整张长图完整展示，可上下滚动阅读，线上走 CDN
+      $('#postDetailBody').innerHTML = `<figure class="detail-longimg"><img src="${esc(assetUrl(it.image))}" alt="${esc(it.title)}" /></figure>`;
     } else {
       const cover = await fileUrl(it.fileId);
       const gallery = await Promise.all((it.gallery || []).map(async (g) => ({ ...g, url: await fileUrl(g.fileId) })));

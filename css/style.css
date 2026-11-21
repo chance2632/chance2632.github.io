@@ -127,9 +127,9 @@ main{max-width:1180px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 80px;min-h
 /* 主页想法气泡：用户参考图原色抠图，三方向尾巴指向头顶 */
 .thought{width:202px;height:202px}
 .thought .cloud-label{transform:translateY(0);color:#4a4340;text-shadow:0 1px 2px rgba(255,255,255,.9)}
-.cloud-resume{left:50%;top:78px;background-image:url("../assets/thought-cream.png");animation-delay:-1s;transform:translateX(-50%)}
-.cloud-works{left:5%;top:132px;background-image:url("../assets/thought-lilac.png");animation-delay:-2.4s}
-.cloud-ai{right:5%;top:132px;background-image:url("../assets/thought-green.png");animation-delay:-3.8s}
+.cloud-resume{left:50%;top:78px;background-image:url("../assets/thought-cream.webp");animation-delay:-1s;transform:translateX(-50%)}
+.cloud-works{left:5%;top:132px;background-image:url("../assets/thought-lilac.webp");animation-delay:-2.4s}
+.cloud-ai{right:5%;top:132px;background-image:url("../assets/thought-green.webp");animation-delay:-3.8s}
 .cloud-resume:hover{transform:translateX(-50%) scale(1.14) rotate(-2deg)}
 
 .home-avatar{
